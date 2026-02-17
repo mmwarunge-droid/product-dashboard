@@ -1,21 +1,6 @@
-.product-card {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  transition: 0.3s ease;
-}
-.in-stock {
-  color: green;
-  font-weight: 600;
-}
-.out-of-stock {
-  color: red;
-  font-weight: 500;
-}
-.out-of-stock-card {
-  opacity: 0.6;
-  background-color: #f9f9f9;
-}
-.out-of-stock-text {
-  text-decoration: line-through;
+ .product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
 }

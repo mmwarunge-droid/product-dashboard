@@ -1,19 +1,42 @@
 import styles from "./ProductCard.module.css";
+import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 
-const ProductCard = ({ id, name, price, inStock }) => {
+const ProductCard = ({ id, name, price, inStock, image }) => {
   return (
-    <div className={`${styles.productCard} ${
-        !inStock ? styles.outOfStockCard : ""
-      }`}
+  <Card
+  className={`${styles.productCard} ${!inStock ? styles.outOfStockCard : ""}`}
+    elevation={3}
     >
-    <h3 className={!inStock ? styles.outOfStockText: ""}>{name}</h3>
+  <CardMedia
+  component="img"
+  image={image}
+  alt={name}
+  className={styles.productImage}
+/>
+  <CardContent
+  className={styles.cardContent}
+  >
+  <Typography variant="h6" className={!inStock ? styles.outOfStockText : ""}>
+  {name}
+  </Typography>
 
-    <p >Price: ${price}</p>
+  <Typography variant="h6" className={styles.priceText}>
+  ${price}
+  </Typography>
 
-    <p className={inStock ? styles.inStockText : styles.outOfStockText}>{inStock ? "In Stock" : "Out of Stock"}
- </p> 
+  <Typography className={inStock ? styles.inStock : styles.outOfStock}>
+  {inStock ? "In Stock" : "Out of Stock"}
+  </Typography>
 
-    </div>
+  <Button
+  variant="contained"
+  disabled={!inStock}
+  className={styles.buyButton}
+>
+{inStock ? "Add to Cart" : "Unavailable"}
+</Button>
+  </CardContent>
+  </Card> 
   );
 };
 
