@@ -1,7 +1,7 @@
 import styles from "./ProductCard.module.css";
 import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
 
-const ProductCard = ({ id, name, price, inStock, image }) => {
+const ProductCard = ({ id, name, price, inStock, image, addToCart }) => {
   return (
   <Card
   className={`${styles.productCard} ${!inStock ? styles.outOfStockCard : ""}`}
@@ -27,14 +27,15 @@ const ProductCard = ({ id, name, price, inStock, image }) => {
   <Typography className={inStock ? styles.inStock : styles.outOfStock}>
   {inStock ? "In Stock" : "Out of Stock"}
   </Typography>
-
-  <Button
-  variant="contained"
-  disabled={!inStock}
-  className={styles.buyButton}
+  
+ <Button
+ variant="contained"
+ disabled={!inStock}
+ ClassName={styles.buyButton}
+ onClick={()=>addToCart && addToCart({id, name, price, inStock, image})}
 >
-{inStock ? "Add to Cart" : "Unavailable"}
-</Button>
+{inStock? "Add To Cart" : "Unavailable"} 
+  </Button>
   </CardContent>
   </Card> 
   );
